@@ -3,7 +3,6 @@
  */
 package com.app.callouts.panel;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -29,7 +28,7 @@ public class MainPanel extends JPanel {
 
 	public String getStdalign() {
 		return stdalign;
-	} 
+	}
 
 	public void setStdalign(String stdalign) {
 		this.stdalign = stdalign;
@@ -63,34 +62,38 @@ public class MainPanel extends JPanel {
 
 		sPanel = new StudentPanel();
 		tPanel = new TeacherPanel();
-		ArrayList<String> temp = new ArrayList<String>();temp.add("test");
-		cPanel = new CalloutsPanel(temp, "right", "left", "");
-		
-		
-		
-		GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(5, 5, 0, 5);
-        
-       
-       
-        sPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 10));
-        gbc.gridx = 0;
-        gbc.weightx = 0.20;
-        this.add(sPanel, gbc);
-        
-      
-     
-        cPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width-10, sPanel.getPreferredSize().height + 200));
-        gbc.weightx = 0.60;
-        gbc.gridx = 1;
-        this.add(cPanel, gbc);
-        
-       
-        tPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 10));
-        gbc.gridx = 2;
-        gbc.weightx =0.20;
-        this.add(tPanel, gbc);
+		ArrayList<String> temp = new ArrayList<String>();
+		temp.add("test");
+		cPanel = new CalloutsPanel(temp, getStdalign(), getTuteralign(), "");
+
+		// Add constraints
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.insets = new Insets(0, 0, 0, 0);
+		constraints.ipadx = 100;
+
+		// Add Student Panel
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.weightx = 0.20;
+		sPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 10));
+		this.add(sPanel, constraints);
+
+		// Add Callout panel
+		constraints.gridx = 1;
+		constraints.gridy = 0;
+		constraints.weightx = 0.60;
+
+		cPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 235));
+		this.add(cPanel, constraints);
+
+		// Add teacher Panel
+		constraints.gridx = 2;
+		constraints.gridy = 0;
+		constraints.weightx = 0.20;
+	
+		tPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 10));
+		this.add(tPanel, constraints);
 
 	}
 
@@ -99,7 +102,7 @@ public class MainPanel extends JPanel {
 		main.remove(cPanel);
 		main.remove(tPanel);
 		main.remove(sPanel);
-		// cPanel = new CalloutsPanel(data); 
+		// cPanel = new CalloutsPanel(data);
 		System.out.println("" + data.size());
 
 		sPanel = new StudentPanel();
@@ -113,37 +116,45 @@ public class MainPanel extends JPanel {
 
 		main.setLayout(new GridBagLayout());
 		// Add constraints
-		GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(5, 5, 0, 5);
-        
-        
-        if (main.getStdalign().equals("left")) {
-			gbc.gridx = 0; 
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.insets = new Insets(0, 0, 0, 0);
+
+		// Add Student Panel
+
+		if (main.getStdalign().equals("left")) {
+			constraints.gridx = 0;
 		} else {
-			gbc.gridx = 2;
+			constraints.gridx = 3;
 		}
-        sPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 10));
-        gbc.weightx = 0.20;
-        this.add(sPanel, gbc);
-        
-      
-       
-        cPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 200));
-        gbc.weightx = 0.60;
-        gbc.gridx = 1;
-        this.add(cPanel, gbc);
-        
+
+		constraints.gridy = 0;
+		constraints.weightx = 0.20;
+		
+		sPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 10));
+		main.add(sPanel, constraints);
+
+		// Add Callout panel
+		constraints.gridx = 1;
+		constraints.gridy = 0;
+		constraints.weightx = 0.60;
+		
+		cPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 235));
+		main.add(cPanel, constraints);
+
+		// Add teacher Panel
+
+		System.out.println("tuter alignhhhh:" + getTuteralign());
 
 		if (main.getTuteralign().equals("left")) {
-			gbc.gridx = 0;
+			constraints.gridx = 0;
 		} else {
-			gbc.gridx = 2;
+			constraints.gridx = 3;
 		}
-       
-        tPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 10));
-        gbc.gridx = 2;
-        gbc.weightx =0.20;
-        this.add(tPanel, gbc);
+		constraints.gridy = 0;
+		constraints.weightx = 0.20;
+		
+		tPanel.setPreferredSize(new Dimension(sPanel.getPreferredSize().width, sPanel.getPreferredSize().height + 10));
+		main.add(tPanel, constraints);
 	}
 }

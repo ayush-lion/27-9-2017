@@ -38,6 +38,7 @@ public class FilledLeftCallout extends Callout {
 			txtToPrint.append(txt).append("<br>");
 		}
 		txtToPrint.append("</html>");
+		System.out.println("html check kr l bhai : " + txtToPrint);
 		super.setText(txtToPrint.toString());
 	}
 

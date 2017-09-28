@@ -324,6 +324,7 @@ public class Main_Panel extends JFrame {
 		model.addColumn("Actions");
 
 		// this.getContentPane().add(new WrappableTable(model));
+		
 		table = new JTable(model);
 		table.setGridColor(Color.LIGHT_GRAY);
 

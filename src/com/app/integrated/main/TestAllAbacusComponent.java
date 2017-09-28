@@ -223,9 +223,11 @@ public class TestAllAbacusComponent extends JFrame {
 			panel.setBounds(10, topicPanel.getHeight(), this.getWidth()-25, this.getHeight()*abacusheight/100);
 			panel.initializeAbacus();
 			panel.displayCount("");
+			
 			//panel.hidePlaceValues();
+			
 			panel.hideBeadLabels();
-			panel.hideUpperBeadsLabels();
+			panel.hideUpperBeadsLabels(); 
 			panel.hideRodLabels(); 
 			panel.showDots();
 			panel.hideDots();

@@ -43,6 +43,7 @@ public abstract class Callout extends JLabel {
         	/*for(int i = length; i < wordWrapLength; i++) {
         		arrangedMessage = arrangedMessage + "&nbsp;";
         	}*/
+        	
         } else {
            String split[] = text.split(" ");
            for (int j = 0; j < split.length; j++) {

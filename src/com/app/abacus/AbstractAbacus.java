@@ -76,7 +76,7 @@ public abstract class AbstractAbacus {
 			throw (new AbacusException("Input is not valid"));
 		}
 		beads[numOfRods - rodNum][beadNum - 1].setDisplayFingerImage(isOnOrOff);
-		
+		 
 		switch (finger) {
 			case Finger.RIGHT_INDEX:
 				beads[numOfRods - rodNum][beadNum - 1].setRightIndex(isOnOrOff);
@@ -90,6 +90,18 @@ public abstract class AbstractAbacus {
 			case Finger.LEFT_THUMB:
 				beads[numOfRods - rodNum][beadNum - 1].setLeftThumb(isOnOrOff);
 				break;
+			case Finger.LEFT_THUMB_INDEX:
+				beads[numOfRods - rodNum][beadNum - 1].setLeftThumbIndex(isOnOrOff);
+				break;
+			case Finger.RIGHT_THUMB_INDEX:
+				beads[numOfRods - rodNum][beadNum - 1].setRightThumbIndex(isOnOrOff);
+				break;
+			case Finger.LEFT_POINTER:
+				beads[numOfRods - rodNum][beadNum - 1].setLeftThumbIndex(isOnOrOff);
+				break;
+			case Finger.RIGHT_POINTER:
+				beads[numOfRods - rodNum][beadNum - 1].setRightThumbIndex(isOnOrOff);
+				break;	
 		}
 	}
 	

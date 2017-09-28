@@ -34,16 +34,96 @@ public class Bead {
 	private Image leftThumbFingerImagePath;
 	private Image leftIndexFingerImagePath;
 
+	/* Two others image */
+	private Image leftThumbIndexImagePath;
+	private Image rightThumbIndexImagePath;
+	private Image leftPointerImagePath;
+	private Image rightPointerImagePath;
+	
+
 	/* Holds Bead's boolean values */
 	private boolean switchable;
 	private boolean leftIndex;
 	private boolean leftThumb;
 	private boolean rightIndex;
 	private boolean rightThumb;
+
+	/* holds bead's boolean value */
+	private boolean leftThumbIndex;
+	private boolean rightThumbIndex;
+	private boolean leftPointer;
+	private boolean rightPointer;
+
+	
+	public Image getLeftPointerImagePath() {
+		return leftPointerImagePath;
+	}
+
+	public void setLeftPointerImagePath(Image leftPointerImagePath) {
+		this.leftPointerImagePath = leftPointerImagePath;
+	}
+
+	public Image getRightPointerImagePath() {
+		return rightPointerImagePath;
+	}
+
+	public void setRightPointerImagePath(Image rightPointerImagePath) {
+		this.rightPointerImagePath = rightPointerImagePath;
+	}
+
+	public boolean isLeftPointer() {
+		return leftPointer;
+	}
+
+	public void setLeftPointer(boolean leftPointer) {
+		this.leftPointer = leftPointer;
+	}
+
+	public boolean isRightPointer() {
+		return rightPointer;
+	}
+
+	public void setRightPointer(boolean rightPointer) {
+		this.rightPointer = rightPointer;
+	}
+
+	public boolean isLeftThumbIndex() {
+		return leftThumbIndex;
+	}
+
+	public void setLeftThumbIndex(boolean leftThumbIndex) {
+		this.leftThumbIndex = leftThumbIndex;
+	}
+
+	public boolean isRightThumbIndex() {
+		return rightThumbIndex;
+	}
+
+	public void setRightThumbIndex(boolean rightThumbIndex) {
+		this.rightThumbIndex = rightThumbIndex;
+	}
+
+	public Image getLeftThumbIndexImagePath() {
+		return leftThumbIndexImagePath;
+	}
+
+	public void setLeftThumbIndexImagePath(Image leftThumbIndexImagePath) {
+		this.leftThumbIndexImagePath = leftThumbIndexImagePath;
+	}
+
+	public Image getRightThumbIndexImagePath() {
+		return rightThumbIndexImagePath;
+	}
+
+	public void setRightThumbIndexImagePath(Image rightThumbIndexImagePath) {
+		this.rightThumbIndexImagePath = rightThumbIndexImagePath;
+	}
+
 	private boolean displayFingerImage;
 	private boolean displaylabels;
 	private int displayNumber;
 	private boolean displaybead;
+
 	/**
 	 * @return the displayNumber
 	 */
@@ -52,7 +132,8 @@ public class Bead {
 	}
 
 	/**
-	 * @param displayNumber the displayNumber to set
+	 * @param displayNumber
+	 *            the displayNumber to set
 	 */
 	public void setDisplayNumber(int displayNumber) {
 		this.displayNumber = displayNumber;
@@ -66,7 +147,8 @@ public class Bead {
 	}
 
 	/**
-	 * @param displaylabels the displaylabels to set
+	 * @param displaylabels
+	 *            the displaylabels to set
 	 */
 	public void setDisplaylabels(boolean displaylabels) {
 		this.displaylabels = displaylabels;
@@ -77,28 +159,22 @@ public class Bead {
 	 */
 	public void drawBead(Graphics g) {
 		if (isSwitchable()) {
-				if(isDisplaylabels())
-				{
-					g.drawImage(heavenImage, posX, hPosY, width, height, null);
-					g.setColor(Color.black);
-					g.setFont(new Font("TimesRoman", Font.BOLD,15));
-					g.drawString(""+getDisplayNumber(), posX+(width/2), hPosY+(width/2));
+			if (isDisplaylabels()) {
+				g.drawImage(heavenImage, posX, hPosY, width, height, null);
+				g.setColor(Color.black);
+				g.setFont(new Font("TimesRoman", Font.BOLD, 15));
+				g.drawString("" + getDisplayNumber(), posX + (width / 2), hPosY + (width / 2));
 
-				}
-				else
-				{
-					g.drawImage(heavenImage, posX, hPosY, width, height, null);
-				}
+			} else {
+				g.drawImage(heavenImage, posX, hPosY, width, height, null);
+			}
 		} else {
-			if(isDisplaylabels())
-			{
+			if (isDisplaylabels()) {
 				g.drawImage(earthImage, posX, ePosY, width, height, null);
 				g.setColor(Color.black);
-				g.setFont(new Font("TimesRoman", Font.BOLD,15));
-				g.drawString(""+getDisplayNumber(), posX+(width/2), ePosY+(width/2));
-			}
-			else
-			{
+				g.setFont(new Font("TimesRoman", Font.BOLD, 15));
+				g.drawString("" + getDisplayNumber(), posX + (width / 2), ePosY + (width / 2));
+			} else {
 				g.drawImage(earthImage, posX, ePosY, width, height, null);
 			}
 		}
@@ -120,7 +196,7 @@ public class Bead {
 	 */
 	public void highlight(Graphics g) {
 		g.setColor(Color.CYAN);
-		if(isSwitchable()) {
+		if (isSwitchable()) {
 			g.fillOval(posX, hPosY, width, height);
 		} else {
 			g.fillOval(posX, ePosY, width, height);
@@ -143,6 +219,21 @@ public class Bead {
 						null);
 			} else if (isRightThumb()) {
 				g.drawImage(getRightThumbFingerImagePath(), posX + (width / 2), yPosition + (height / 2), width, height,
+						null);
+
+				/* add others FingerImage */
+
+			} else if (isLeftThumbIndex()) {
+				g.drawImage(getLeftThumbIndexImagePath(), posX + (width / 2), yPosition + (height / 2), width, height,
+						null);
+			} else if (isRightThumbIndex()) {
+				g.drawImage(getRightThumbIndexImagePath(), posX + (width / 2), yPosition + (height / 2), width, height,
+						null);
+			} else if (isLeftPointer()) {
+				g.drawImage(getLeftPointerImagePath(), posX + (width / 2), yPosition + (height / 2), width, height,
+						null);
+			} else if (isRightPointer()) {
+				g.drawImage(getRightPointerImagePath(), posX + (width / 2), yPosition + (height / 2), width, height,
 						null);
 			}
 		}

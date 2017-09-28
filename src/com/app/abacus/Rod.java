@@ -30,7 +30,7 @@ public class Rod {
 	private boolean hideplacevales;
 	/**
 	 * @return the hideplacevales
-	 */
+	 */ 
 	public boolean isHideplacevales() {
 		return hideplacevales;
 	}

@@ -280,7 +280,7 @@ public class AbacusPanel extends JPanel {
 		switchBoolean("doWeNeedToHighlightSpecificRods");
 		this.rodNumber = rodNum;
 		this.repaint();
-	}
+	} 
 	
 	/**
 	 * Method is responsible to hightlight Specific Rod

@@ -142,7 +142,7 @@ public class TestAbacusComponent extends JFrame {
 							panel.moveBeadUpTogether(rodNum, beads, Finger.LEFT_THUMB, Finger.LEFT_INDEX);
 					} else {
 						if(beadNum == 5) 
-							panel.moveHeavenBeadUp(rodNum, Finger.LEFT_INDEX);
+							panel.moveHeavenBeadUp(rodNum, Finger.LEFT_INDEX); 
 						else
 							panel.moveEarthBeadUp(rodNum, beadNum, Finger.LEFT_THUMB);
 					}
@@ -160,7 +160,7 @@ public class TestAbacusComponent extends JFrame {
 		bDownBut = new JButton("Move Bead Down");
 		bDownBut.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { 
 				try {
 					int rodNum = Integer.valueOf(bDownRod.getText());
 					int beadNum = Integer.valueOf(bDownBead.getText());

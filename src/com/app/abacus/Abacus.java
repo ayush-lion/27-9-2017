@@ -274,7 +274,7 @@ public class Abacus extends AbstractAbacus {
 		
 		frame.setPosX(0);
 		frame.setPosY(0);
-		frame.setShowlabel(false);
+		frame.setShowlabel(false); 
 		frame.setWidth(panel.getWidth());
 		frame.setHeight(panel.getHeight());
 	}
@@ -364,6 +364,13 @@ public class Abacus extends AbstractAbacus {
 		Image rightIndexFingerImagePath = getImage(attributes.get("rightIndexFingerImagePath"));
 		Image leftThumbFingerImagePath = getImage(attributes.get("leftThumbFingerImagePath"));
 		Image leftIndexFingerImagePath = getImage(attributes.get("leftIndexFingerImagePath"));
+	
+		/* other images */
+		
+		Image leftThumbIndexImagePath = getImage(attributes.get("leftThumbIndexImagePath"));
+		Image rightThumbIndexImagePath = getImage(attributes.get("leftIndexFingerImagePath"));
+		Image leftPointerImagePath = getImage(attributes.get("leftPointerImagePath"));
+		Image rightPointerImagePath = getImage(attributes.get("rightPointerImagePath"));
 		
 		Integer beadWidth = attributes.get("beadWidth") != null 
 								? Integer.valueOf(attributes.get("beadWidth")) : Abacus.DEFAULT_BEAD_WIDTH;
@@ -404,12 +411,20 @@ public class Abacus extends AbstractAbacus {
 				beads[i][j].setRightIndexFingerImagePath(rightIndexFingerImagePath);
 				beads[i][j].setLeftIndexFingerImagePath(leftIndexFingerImagePath);
 				beads[i][j].setLeftThumbFingerImagePath(leftThumbFingerImagePath);
+				
+				beads[i][j].setLeftThumbIndexImagePath(leftThumbIndexImagePath);
+				beads[i][j].setRightThumbIndexImagePath(rightThumbIndexImagePath);
+				beads[i][j].setLeftPointerImagePath(leftPointerImagePath);
+				beads[i][j].setRightPointerImagePath(rightPointerImagePath);
+				
 				beads[i][j].setWidth(beadWidth.intValue());
 				beads[i][j].setHeight(beadHeight.intValue());
 				beads[i][j].setLeftIndex(Boolean.FALSE);
 				beads[i][j].setLeftThumb(Boolean.FALSE);
 				beads[i][j].setRightIndex(Boolean.FALSE);
 				beads[i][j].setRightThumb(Boolean.FALSE);
+				beads[i][j].setLeftThumbIndex(Boolean.FALSE);
+				beads[i][j].setRightThumbIndex(Boolean.FALSE);			
 			}
 		}
 	}

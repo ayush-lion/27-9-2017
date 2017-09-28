@@ -220,13 +220,8 @@ public class Performer implements Runnable {
 						ArrayList<String> tosend = temp;
 						try {
 							Thread.sleep(500);
-							// .setData(tosend);
+
 							instructionPanel.ChangeInstructions(tosend, instructionPanel);
-
-							// instructionPanel.repaint();
-
-							// validateTree();
-							// instructionPanel.revalidate();
 							instructionPanel.validate();
 
 						} catch (InterruptedException e) {
@@ -238,11 +233,6 @@ public class Performer implements Runnable {
 						try {
 							Thread.sleep(500);
 							instructionPanel.ChangeInstructions(tosend, instructionPanel);
-
-							// instructionPanel.repaint();
-
-							// validateTree();
-							// instructionPanel.revalidate();
 							instructionPanel.validate();
 
 						} catch (InterruptedException e) {
@@ -255,9 +245,7 @@ public class Performer implements Runnable {
 						playRoboticsVoice(instruction.substring(2).replaceAll("\\<.*?\\>", "").replace("opic>", ""));
 
 					}
-					// System.out.println("voice "+i+" "+instruction.substring(2));
 				}
-				// playText(instruction, i);
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -268,7 +256,6 @@ public class Performer implements Runnable {
 				StringBuffer actBuf = new StringBuffer();
 				for (Action action : listOfActions) {
 
-					// System.out.println(""+action);
 					if (action.getActionName().equalsIgnoreCase("HighlightFrame")) {
 						abacusPanel.highlightFrame();
 						abacusPanel.showFrameLabel();
@@ -280,7 +267,7 @@ public class Performer implements Runnable {
 
 					} else if (action.getActionName().equalsIgnoreCase("HighlightRod")) {
 						System.out.println("" + action);
-					
+
 						if (action.getRodNumber() != null && action.getBeadNumber() != null) {
 
 							abacusPanel.highlightSpecificBead(action.getRodNumber(), action.getBeadNumber());
@@ -291,7 +278,7 @@ public class Performer implements Runnable {
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
-							
+
 						} else if (action.getRodNumber() != null) {
 							abacusPanel.highlightSpecificRod(action.getRodNumber());
 							System.out.println("inside hightlight specific rod " + action);
@@ -310,7 +297,7 @@ public class Performer implements Runnable {
 							e.printStackTrace();
 						}
 
-					}else if (action.getActionName().equalsIgnoreCase("HidePlaceValue")) {
+					} else if (action.getActionName().equalsIgnoreCase("HidePlaceValue")) {
 						abacusPanel.hidePlaceValues();
 						try {
 							Thread.sleep(1000);
@@ -318,8 +305,8 @@ public class Performer implements Runnable {
 							e.printStackTrace();
 						}
 
-					}
-					else if (action.getActionName().equalsIgnoreCase("addrod")) {
+					} else if (action.getActionName().equalsIgnoreCase("addrod")) {
+
 						System.out.println("inside add rod");
 						int rodNum = action.getRodNumber();
 						int beadNum = action.getBeadNumber();
@@ -332,45 +319,35 @@ public class Performer implements Runnable {
 							if (beads[0] == 5) {
 								if (action.getFinger() != null) {
 									abacusPanel.hideFingers(true);
-
 									abacusPanel.moveBeadUpTogether(rodNum, beads, Finger.LEFT_INDEX, Finger.LEFT_THUMB);
 								} else {
 									abacusPanel.hideFingers(false);
-
-									abacusPanel.moveBeadUpTogether(rodNum, beads, Finger.LEFT_INDEX, Finger.LEFT_THUMB);
+									abacusPanel.moveBeadUpTogether(rodNum, beads, Finger.RIGHT_INDEX, Finger.RIGHT_THUMB);
 								}
-							}
-							// abacusPanel.moveBeadUpTogether(rodNum, beads, Finger.LEFT_INDEX,
-							// Finger.LEFT_THUMB);
-							else if (beads[1] == 5) {
+							} else if (beads[1] == 5) { 
 								if (action.getFinger() != null) {
-									abacusPanel.hideFingers(true);
+									abacusPanel.hideFingers(true); 
 									abacusPanel.moveBeadUpTogether(rodNum, beads, Finger.LEFT_THUMB, Finger.LEFT_INDEX);
 								} else {
 									abacusPanel.hideFingers(false);
-									abacusPanel.moveBeadUpTogether(rodNum, beads, Finger.LEFT_THUMB, Finger.LEFT_INDEX);
-
+									abacusPanel.moveBeadUpTogether(rodNum, beads, Finger.LEFT_THUMB, Finger.RIGHT_THUMB);
 								}
 							}
-						}
-
-						else {
+						} else {
 							if (beadNum == 5) {
 								if (action.getFinger() != null) {
 									abacusPanel.hideFingers(true);
 									abacusPanel.moveHeavenBeadUp(rodNum, Finger.LEFT_INDEX);
 								} else {
 									abacusPanel.hideFingers(false);
-									abacusPanel.moveHeavenBeadUp(rodNum, Finger.LEFT_INDEX);
-
+									abacusPanel.moveHeavenBeadUp(rodNum, Finger.RIGHT_INDEX);
 								}
 							} else {
 								abacusPanel.hideFingers(true);
-								abacusPanel.moveEarthBeadUp(rodNum, beadNum, Finger.LEFT_THUMB);
+								abacusPanel.moveEarthBeadUp(rodNum, beadNum, Finger.RIGHT_THUMB);
 							}
 						}
 					} else if (action.getActionName().contains("MinusRod")) {
-
 						System.out.println("inside minus rod");
 						int rodNum = action.getRodNumber();
 						int beadNum = action.getBeadNumber();
@@ -383,20 +360,16 @@ public class Performer implements Runnable {
 							if (beads[0] == 5) {
 								if (action.getFinger() != null) {
 									abacusPanel.hideFingers(true);
-
 									abacusPanel.moveBeadDownTogether(rodNum, beads, Finger.LEFT_INDEX,
 											Finger.LEFT_THUMB);
-
 									System.out.println("moving bead up together");
 									try {
 										Thread.sleep(500);
 									} catch (InterruptedException e) {
 										e.printStackTrace();
 									}
-
 								} else {
 									abacusPanel.hideFingers(false);
-
 									abacusPanel.moveBeadDownTogether(rodNum, beads, Finger.LEFT_INDEX,
 											Finger.LEFT_THUMB);
 									System.out.println("moving bead up together");
@@ -405,13 +378,8 @@ public class Performer implements Runnable {
 									} catch (InterruptedException e) {
 										e.printStackTrace();
 									}
-
 								}
-
-							}
-							// abacusPanel.moveBeadUpTogether(rodNum, beads, Finger.LEFT_INDEX,
-							// Finger.LEFT_THUMB);
-							else if (beads[1] == 5) {
+							} else if (beads[1] == 5) {
 								if (action.getFinger() != null) {
 									abacusPanel.hideFingers(true);
 									abacusPanel.moveBeadDownTogether(rodNum, beads, Finger.LEFT_THUMB,
@@ -422,7 +390,6 @@ public class Performer implements Runnable {
 									} catch (InterruptedException e) {
 										e.printStackTrace();
 									}
-
 								} else {
 									abacusPanel.hideFingers(false);
 									abacusPanel.moveBeadDownTogether(rodNum, beads, Finger.LEFT_THUMB,
@@ -433,12 +400,9 @@ public class Performer implements Runnable {
 									} catch (InterruptedException e) {
 										e.printStackTrace();
 									}
-
 								}
 							}
-						}
-
-						else {
+						} else {
 							if (beadNum == 5) {
 								if (action.getFinger() != null) {
 									abacusPanel.hideFingers(true);
@@ -447,9 +411,8 @@ public class Performer implements Runnable {
 									try {
 										Thread.sleep(500);
 									} catch (InterruptedException e) {
-										e.printStackTrace();
+										e.printStackTrace(); 
 									}
-
 								} else {
 									abacusPanel.hideFingers(false);
 									abacusPanel.moveHeavenBeadDown(rodNum, Finger.LEFT_INDEX);
@@ -459,7 +422,6 @@ public class Performer implements Runnable {
 									} catch (InterruptedException e) {
 										e.printStackTrace();
 									}
-
 								}
 							} else {
 								abacusPanel.hideFingers(true);
@@ -470,10 +432,8 @@ public class Performer implements Runnable {
 								} catch (InterruptedException e) {
 									e.printStackTrace();
 								}
-
 							}
 						}
-
 					} else if (action.getActionName().contains("BlinkRod")) {
 						if (action.getBeadNumber() != null) {
 							abacusPanel.startBlinkBead(action.getRodNumber(), action.getBeadNumber());
@@ -486,7 +446,6 @@ public class Performer implements Runnable {
 
 						} else {
 							abacusPanel.startBlinkRod(action.getRodNumber());
-							// abacusPanel.hideFingers(true);
 
 							try {
 								Thread.sleep(500);
@@ -497,10 +456,6 @@ public class Performer implements Runnable {
 						}
 					} else if (action.getActionName().equalsIgnoreCase("stopBlink")) {
 						abacusPanel.stopBlinkBead();
-						// abacusPanel.stopBlinkBeam();
-						// abacusPanel.stopBlinkFrame();
-						// abacusPanel.stopBlinkRod();
-
 						try {
 							Thread.sleep(500);
 						} catch (InterruptedException e) {
@@ -536,7 +491,6 @@ public class Performer implements Runnable {
 						}
 
 					} else if (action.getActionName().equalsIgnoreCase("Reset")) {
-						// abacusPanel.resetAllBooleans();
 						abacusPanel.showAbacus();
 						try {
 							Thread.sleep(500);
@@ -551,7 +505,6 @@ public class Performer implements Runnable {
 							abacusPanel.hideFingers(true);
 							abacusPanel.moveEarthBeadUp(action.getRodNumber(), action.getBeadNumber(),
 									action.getFinger());
-							// abacusPanel.hideFingers(false);
 							try {
 								Thread.sleep(500);
 							} catch (InterruptedException e) {
@@ -617,7 +570,7 @@ public class Performer implements Runnable {
 						abacusPanel.hideRodLabels();
 						abacusPanel.hidePlaceValues();
 						abacusPanel.hideRodLabels();
-						
+
 						try {
 							Thread.sleep(1000);
 						} catch (InterruptedException e) {
@@ -652,11 +605,8 @@ public class Performer implements Runnable {
 							e.printStackTrace();
 						}
 					}
-
 				}
-
 			}
-			// odel.addRow(tableRow);
 		}
 	}
 
@@ -669,7 +619,5 @@ public class Performer implements Runnable {
 			e.printStackTrace();
 		}
 		// TODO Auto-generated method stub
-
 	}
-
 }
